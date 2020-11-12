@@ -1,9 +1,9 @@
 
 import { RouterModule, Routes } from '@angular/router';
-import { Component } from '@angular/core';
+import { IngresaComponent } from './components/ingresa/ingresa.component';
 
 const APP_ROUTES: Routes = [
-{ path: 'routePath', component: Component },
+{ path: 'Inicio', component: IngresaComponent },
 { path: '**', pathMatch: 'full', redirectTo: '' }
 ];
 
