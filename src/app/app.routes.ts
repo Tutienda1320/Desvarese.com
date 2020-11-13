@@ -2,7 +2,7 @@
 import { RouterModule, Routes } from '@angular/router';
 import { IngresaComponent } from './components/ingresa/ingresa.component';
 import { CuentaComponent } from './components/cuenta/cuenta.component';
-import { HomeComponent } from './components/Home/Home.component';
+import { HomeComponent } from './components/home/home.component';
 
 const APP_ROUTES: Routes = [
 { path: 'Ingresa', component: IngresaComponent },
