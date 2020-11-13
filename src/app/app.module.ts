@@ -19,8 +19,6 @@ import { NavbarComponent } from './components/shared/navbar/navbar.component';
 import { HomeComponent } from './components/home/home.component';
 import { CuentaComponent } from './components/cuenta/cuenta.component';
 import { IngresaComponent } from './components/ingresa/ingresa.component';
-import { Publica } from './component/publica.ts/publica.ts.component';
-import { Publica } from './components/publica.ts/publica.ts.component';
 import { PublicaComponent } from './components/publica/publica.component';
 
 @NgModule({
@@ -33,8 +31,6 @@ import { PublicaComponent } from './components/publica/publica.component';
     HomeComponent,
     CuentaComponent,
     IngresaComponent,
-    Publica.Component,
-    Publica.TsComponent,
     PublicaComponent,
   ],
   imports: [
