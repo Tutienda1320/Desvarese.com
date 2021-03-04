@@ -8,6 +8,7 @@ import { PipesModule } from '../pipes/pipes.module';
 import { HighlightModule, HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
 import { BuscarComponent } from './buscar/buscar.component';
 import { PublicarComponent } from './publicar/publicar.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { PublicarComponent } from './publicar/publicar.component';
     CommonModule,
     ComponentsModule,
     PipesModule,
-    HighlightModule
+    HighlightModule,
+    ReactiveFormsModule
   ],
   providers:[
     {

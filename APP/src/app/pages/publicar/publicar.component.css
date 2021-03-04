@@ -1,10 +1,10 @@
-:root {
+/* :root {
     --color-dark: #15181f;
     --color-dark-x: #2d343f;
     --color-dark-xx: #1f232b;
     --color-light: #ffffff;
     --color-grey: #f5f6f8;
-}
+} */
 
 body {
     /* font-family: 'Roboto', sans-serif; */
@@ -39,7 +39,7 @@ body {
 }
 
 .btn-outline-dark {
-    border: 2px solid var(#1f232b);
+    border: 2px solid #77797c;
 }
 
 .form-control {
