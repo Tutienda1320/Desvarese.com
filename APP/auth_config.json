@@ -1,0 +1,7 @@
+{
+    "domain": "dev-lvgvt66c.us.auth0.com",
+    "clientId": "eAjlZIbWmLHw8efq0Qtx8vFYRdQjNVVT",
+    "audience": "https://dev-lvgvt66c.us.auth0.com/api/v2/",
+    "apiUri": "http://localhost:3001",
+    "appUri": "http://localhost:4200"
+}
