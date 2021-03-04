@@ -1,0 +1,17 @@
+<div class="container" *ngIf="auth.isLoading$ | async; else loaded">
+    <app-loading></app-loading>
+</div>
+
+<ng-template #loaded>
+    <!--  <app-hero></app-hero> -->
+    <div class="row" *ngIf="items.length > 0">
+        <div class="col">
+            <app-slideshow [items]="itemsSlide"></app-slideshow>
+        </div>
+    </div>
+
+    <h4 class="mt-2 animate__animated animate__fadeIn">Otros</h4>
+
+    <app-item-poster-grid [items]="items" *ngIf="items.length > 0"></app-item-poster-grid>
+
+</ng-template>

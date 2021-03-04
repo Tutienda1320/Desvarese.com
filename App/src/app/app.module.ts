@@ -1,43 +1,43 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-// Rutas
-import { APP_ROUTING} from './app.routes';
-
-
-// Servicios
-
-
-
-// componentes
-
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './components/header/header.component';
-import { BodyComponent } from './components/body/body.componetn';
-import { FooterComponent } from './components/footer/footer.component';
-import { NavbarComponent } from './components/shared/navbar/navbar.component';
-import { HomeComponent } from './components/home/home.component';
-import { CuentaComponent } from './components/cuenta/cuenta.component';
-import { IngresaComponent } from './components/ingresa/ingresa.component';
-import { PublicaComponent } from './components/publica/publica.component';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthHttpInterceptor, AuthModule } from '@auth0/auth0-angular';
+import { environment as env } from '../environments/environment';
+import { ComponentsModule } from './components/components.module';
+import { PagesModule } from './pages/pages.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    HeaderComponent,
-    BodyComponent,
-    FooterComponent,
-    NavbarComponent,
-    HomeComponent,
-    CuentaComponent,
-    IngresaComponent,
-    PublicaComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,
-    APP_ROUTING
+    ComponentsModule,
+    PagesModule,
+    AppRoutingModule,
+    HttpClientModule,
+    AuthModule.forRoot({
+      ...env.auth,
+      httpInterceptor: {
+        ...env.httpInterceptor,
+      },
+    }),
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthHttpInterceptor,
+      multi: true,
+    },
+    {
+      provide: Window,
+      useValue: window,
+    }
+    
+  ],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

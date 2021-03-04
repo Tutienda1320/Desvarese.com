@@ -1,0 +1,14 @@
+.btn-search {
+    background-color: rgb(223, 87, 46);
+    border-color: white;
+    color: white;
+    border-radius: 5px;
+}
+
+.btn-login {
+    background-color: rgb(7, 10, 173);
+    border-color: white;
+    color: white;
+    border-radius: 5px;
+    margin: 5px;
+}

@@ -1,0 +1,146 @@
+<div class="btn-group animate__animated animate__fadeIn" role="group" aria-label="Basic checkbox toggle button group">
+    <input type="checkbox" class="btn-check" id="opc1" (change)="onChange1()" autocomplete="off" checked>
+    <label class="btn btn-outline-primary" for="opc1">
+        <i class="fas fa-thumbs-up "> < 100</i>
+    </label>
+
+    <input type="checkbox" class="btn-check" id="opc2" (change)="onChange2()" autocomplete="off" checked>
+    <label class="btn btn-outline-primary" for="opc2">
+        <i class="fas fa-thumbs-up "> > 100 < 200</i>
+    </label>
+
+    <input type="checkbox" class="btn-check" id="opc3" (change)="onChange3()" autocomplete="off" checked>
+    <label class="btn btn-outline-primary" for="opc3">
+        <i class="fas fa-thumbs-up "> > 200</i>
+    </label>
+</div>
+
+<div class="contenedor1 animate__animated animate__fadeIn">
+
+    <ul class="item-contain animate__animated animate__fadeIn" (click)=" onItemClick(item.id) " *ngFor="let item of items; index as i">
+        <div *ngIf="item.likes < 100" class="item2-contain" [ngStyle]="{'background-size': 'cover', 'background-image': 'url('+ (item.urls.thumb | noneImg) + ')', 'box-shadow': '0px 0px 10px rgba(247, 2, 2, 0.89)'}">
+            <div class="calif " *ngIf="item" [ngStyle]="{'background-color': 'rgba(247, 2, 2, 0.3)'}">
+                <i class="fas fa-thumbs-up ">  {{(item.likes)}}</i>
+            </div>
+            <div class="item-description " [ngStyle]="{ 'background-color': 'rgba(247, 2, 2, 0.3)'} ">
+                <p class="ml-2" *ngIf="item.description "> {{item.description | titlecase | slice:0:30}}</p>
+
+                <p class="ml-2" *ngIf="!item.description "> {{item.alt_description | titlecase | slice:0:30}}</p>
+
+            </div>
+        </div>
+        <div *ngIf="item.likes > 100 && item.likes < 200" class="item2-contain" [ngStyle]="{'background-size': 'cover', 'background-image': 'url('+ (item.urls.thumb | noneImg) + ')', 'box-shadow': '0px 0px 15px rgba(3, 243, 15, 0.815)'}">
+            <div class="calif " *ngIf="item" [ngStyle]="{'background-color': 'rgba(3, 243, 15, 0.3)'}">
+                <i class="fas fa-thumbs-up ">  {{(item.likes)}}</i>
+            </div>
+            <div class="item-description " [ngStyle]="{ 'background-color': 'rgba(3, 243, 15, 0.3)'} ">
+                <p class="ml-2" *ngIf="item.description "> {{item.description | titlecase | slice:0:30}}</p>
+
+                <p class="ml-2" *ngIf="!item.description "> {{item.alt_description | titlecase | slice:0:30}}</p>
+
+            </div>
+        </div>
+        <div *ngIf="item.likes > 200" class="item2-contain" [ngStyle]="{'background-size': 'cover', 'background-image': 'url('+ (item.urls.thumb | noneImg) + ')', 'box-shadow': '0px 0px 15px rgba(221, 245, 7, 0.959)'}">
+            <div class="calif " *ngIf="item" [ngStyle]="{'background-color': 'rgba(221, 245, 7, 0.3)'}">
+                <i class="fas fa-thumbs-up ">  {{(item.likes)}}</i>
+            </div>
+            <div class="item-description " [ngStyle]="{ 'background-color': 'rgba(221, 245, 7, 0.3)'} ">
+                <p class="ml-2" *ngIf="item.description "> {{item.description | titlecase | slice:0:30}}</p>
+
+                <p class="ml-2" *ngIf="!item.description "> {{item.alt_description | titlecase | slice:0:30}}</p>
+
+            </div>
+        </div>
+    </ul>
+
+
+    <!-- <ul class="item-contain" *ngFor="let item of items; index as i">
+        <ul class="item2-contain" *ngIf="opc1 && item.likes < 100">
+            <div class="item2-contain">
+                Flex item {{i}} {{item.likes}}
+            </div>
+        </ul>
+        <ul class="item2-contain" *ngIf="opc2 && item.likes > 100 && item.likes < 200 ">
+            <div class="item2-contain">
+                Flex item {{i}} {{item.likes}}
+            </div>
+        </ul>
+        <ul class="item2-contain" *ngIf="opc3 && item.likes > 200">
+            <div class="item2-contain">
+                Flex item {{i}} {{item.likes}}
+            </div>
+        </ul>
+
+        
+    </ul> -->
+
+
+</div>
+<!-- 
+<div class="contenedor1">
+    <div class="item-contain" (click)=" onItemClick(item.id) " *ngFor="let item of items ">
+        <div class="animate__animated animate__fadeIn poster-container " [ngStyle]="{ 'background-size': 'cover', 'box-shadow': '0px 0px 10px rgba(247, 2, 2, 0.89)', 'background-image': 'url('+ (item.urls.thumb | noneImg) + ')' } " *ngIf="item.likes
+        < 100 && opc1 ">
+            <div class="row ">
+                <div class="col-8 "></div>
+                <div class="col-4 calif " *ngIf="item ">
+                    <i class="fas fa-thumbs-up "></i> {{(item.likes)}}
+                </div>
+            </div>
+
+            <div class="item-description " [ngStyle]="{ 'background-color': 'rgba(247, 2, 2, 0.3)'} ">
+                <p class="ml-2" *ngIf="item.description "> {{item.description | titlecase}}</p>
+
+                <p class="ml-2" *ngIf="!item.description "> {{item.alt_description | titlecase}}</p>
+
+            </div>
+
+
+        </div>
+
+        <div class="animate__animated animate__fadeIn poster-container " [ngStyle]="{ 'background-size': 'cover', 'box-shadow': '0px 0px 10px rgba(3, 243, 15, 0.815)', 'background-image': 'url('+ (item.urls.thumb | noneImg) + ')' } " *ngIf="item.likes>
+    200 && opc3">
+            <div class="row">
+                <div class="col-8"></div>
+                <div class="col-4 calif " *ngIf="item">
+                    <i class="fas fa-thumbs-up  "></i> {{(item.likes)}}
+                </div>
+            </div>
+
+            <div class="item-description " [ngStyle]="{'background-color': 'rgba(3, 243, 15, 0.3)'}">
+                <p class="ml-2 " *ngIf="item.description"> {{item.description | titlecase}}</p>
+
+                <p class="ml-2 " *ngIf="!item.description"> {{item.alt_description | titlecase}}</p>
+
+            </div>
+
+
+        </div>
+
+        <div class="animate__animated animate__fadeIn poster-container" [ngStyle]="{
+            'background-size': 'cover',
+            'box-shadow':'0px 0px 10px rgba(221, 245, 7, 0.959)',
+            'background-image': 'url('+ (item.urls.thumb | noneImg) + ')'
+            }" *ngIf="item.likes < 200 && item.likes > 100 && opc2">
+            
+            <div class="row">
+                <div class="col-8"></div>
+                <div class="col-4 calif " *ngIf="item">
+                    <i class="fas fa-thumbs-up  "></i> {{(item.likes)}}
+                </div>
+            </div>
+
+            <div class="item-description " [ngStyle]="{'background-color': 'rgba(221, 245, 7, 0.3)'}">
+                <p class="ml-2 " *ngIf="item.description"> {{item.description | titlecase}}</p>
+
+                <p class="ml-2 " *ngIf="!item.description"> {{item.alt_description| titlecase}}</p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+    
+</div> -->

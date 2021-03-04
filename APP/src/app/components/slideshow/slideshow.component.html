@@ -1,0 +1,25 @@
+<h3>Promociones</h3>
+
+<!-- Slider main container -->
+<div class="swiper-container mt-3">
+    <!-- Additional required wrapper -->
+    <div class="swiper-wrapper">
+        <!-- Slides -->
+        <div class="swiper-slide animate__animated animate__fadeIn" (click)="onItemClick(item.id)" *ngFor="let item of items" [ngStyle]="{
+            'background-size': 'cover',
+            'background-image': 'url('+ item.urls.regular + ')'
+        }">
+            <div class="item-description">
+                <h3 *ngIf="item.description">{{item.description | titlecase}}</h3>
+                <h3 *ngIf="!item.description">{{item.alt_description | titlecase}}</h3>
+                <p>
+                    {{item.alt_description | slice: 0:130}}
+                </p>
+            </div>
+        </div>
+    </div>
+    <!-- If we need navigation buttons -->
+    <div (click)="onSlidePrev()" class="swiper-button-prev" [ngStyle]="{'color': 'white'}"></div>
+    <div (click)="onSlideNext()" class="swiper-button-next" [ngStyle]="{'color': 'white'}"></div>
+
+</div>
