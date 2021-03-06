@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const usuarios = require('./Routes/usuario');
+const items = require('./Routes/items');
 const cors = require('cors');
 
 const corsOptions = {
@@ -20,7 +21,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use('/api/usuarios', usuarios);
-
+app.use('/api/items', items);
 
 app.get('/', (req, res) => {
     res.send('API corriendo');

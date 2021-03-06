@@ -1,69 +1,126 @@
-<!-- <section>
-    <div class="row" [ngStyle]="{'background-color': '#15181f'}">
-        <div class="col-xl-5 col-lg-12">
-
-        </div>
-        <div class="col-xl-7 col-lg-12 d-flex justify-content-center">
-            <div class="container align-self-center text-light">
-                <h1>formulario</h1>
-                <div class="form-group">
-                    <button class="btn btn-outline-dark d-inline-block text-light mr-2 mb-3"><i class="fab fa-google lead align-middle mr-2"></i>Google</button>
-                    <button class="btn btn-outline-dark d-inline-block text-light mr-2 mb-3"><i class="fab fa-facebook lead align-middle mr-2"></i>Facebook</button>
-                </div>
-                <p class="text-muted mb-5">informacion relacionada al tema</p>
-
-            </div>
-        </div>
-
+<section class="flex-row bd-highlight mb-3 register-bg">
+    <div class="p-2 bd-highlight">
+        <input class="btn bd-highlight btn-light m-2" type="file" (change)="OnChangeFile($event)">
     </div>
-</section> -->
-
-<section class="contact-box">
-    <div class="row no-gutters bg-dark">
-        <div class="col-xl-5 col-lg-12 register-bg">
-            <div class="position-absolute testiomonial p-4">
-                <h3 class="font-weight-bold text-light">La siguiente revolución digital.</h3>
-                <p class="lead text-light">La nueva etapa de la revolución digital se aproxima.</p>
+    <div class="p-2 bd-highlight d-flex flex-wrap">
+        <div class="bd-highlight d-flex align-items-stretch" *ngIf="imgPreview[0]">
+            <div class="bd-highlight preview m-2" *ngFor="let imgPrev of imgPreview">
+                <button type="button" class="btn" (click)="onClick()"> 
+                    <i class="fas fa-trash-alt" style="color:red"></i>
+                </button>
+                <img class="preview" [src]="imgPrev" alt="">
             </div>
         </div>
-        <div class="col-xl-7 col-lg-12 d-flex">
-            <div class="container align-self-center p-6">
-                <h1 class="font-weight-bold mb-3 text-light">Crea tu cuenta gratis</h1>
-                <div class="form-group">
+    </div>
+    <div class="p-2 bd-highlight d-flex ">
+        <div class="container align-self-center p-4">
+            <h1 class="font-weight-bold mb-3 text-light">Ingresa nueva publicacion</h1>
+            <!-- <div class="form-group">
                     <button class="btn btn-outline-dark d-inline-block text-light mr-2 mb-3 width-100"><i class="icon ion-logo-google lead align-middle mr-2"></i> Google </button>
                     <button class="btn btn-outline-dark d-inline-block text-light mb-3 width-100"><i class="icon ion-logo-facebook lead align-middle mr-2"></i> Facebook</button>
-                </div>
-                <p class="text-muted mb-5 text-light">Ingresa la siguiente información para registrarte.</p>
+                </div> -->
+            <p class="text-muted text-light">Ingresa la siguiente información para registrar tu publicación.</p>
 
-                <form [formGroup]="form">
-                    <div class="form-row mb-2">
-                        <div class="col-md-6">
-                            <label class="font-weight-bold text-light">Nombre <span class="text-danger">*</span></label>
-                            <input formControlName="name" class="form-control" type="text" placeholder="Tu nombre">
-                        </div>
-                        <div class="col-md-6">
-                            <label class="font-weight-bold text-light">Apellido <span class="text-danger">*</span></label>
-                            <input type="text" formControlName="apellido" class="form-control" placeholder="Tu apellido">
-                        </div>
-                    </div>
-                    <div class="mb-3">
-                        <label class="font-weight-bold text-light">Correo electrónico <span class="text-danger">*</span></label>
-                        <input type="email" formControlName="email" class="form-control" placeholder="Ingresa tu correo electrónico">
-                    </div>
-                    <div class="mb-3">
-                        <label class="font-weight-bold text-light">Contraseña <span class="text-danger">*</span></label>
-                        <input type="password" formControlName="pass" class="form-control" placeholder="Ingresa una contraseña">
-                    </div>
-                    <div class="mb-5">
-                        <div class="form-check">
-                            <input class="form-check-input" formControlName="ok" type="checkbox">
-                            <label class="form-check-label text-muted">Al seleccionar esta casilla aceptas nuestro aviso de privacidad y los términos y condiciones</label>
+            <form [formGroup]="form" novalidate (ngSubmit)="save($event)">
+                <div class="form-row">
+                    <div class="col-md-12">
+                        <label class="font-weight-bold text-light">Tipo de publicación </label>
+                        <div class="btn-group mt-2" [ngStyle]="{'padding': '1.5rem 1rem'}" role="group" aria-label="Basic radio toggle button group">
+                            <input type="radio" class="btn-check" formControlName="tipo" name="tipo" value="servicio" id="btnradio1" autocomplete="off">
+                            <label class="btn btn-outline-secondary font-weight-bold text-light" for="btnradio1">Servicio</label>
+
+                            <input type="radio" class="btn-check" formControlName="tipo" name="tipo" value="producto" id="btnradio2" autocomplete="off">
+                            <label class="btn btn-outline-secondary font-weight-bold text-light" for="btnradio2">Producto</label>
+
+                            <input type="radio" class="btn-check" formControlName="tipo" name="tipo" value="taller" id="btnradio3" autocomplete="off">
+                            <label class="btn btn-outline-secondary font-weight-bold text-light" for="btnradio3">Taller</label>
                         </div>
                     </div>
-                    <button class="btn btn-primary width-100" type="button" (click)="onClick()">Regístrate</button>
-                </form>
-                <small class="d-inline-block text-muted mt-5">Todos los derechos reservados | © 2019 Templune</small>
-            </div>
+
+                </div>
+
+                <div class="form-row mb-2">
+                    <div class="col-md-12">
+                        <label class="font-weight-bold text-light">Nombre <span class="text-danger" *ngIf="nombreField.hasError('required') && nombreField.touched">*</span></label>
+                        <input formControlName="nombre" class="form-control" type="text" placeholder="Nombra tu publicacion">
+                    </div>
+                    <div *ngIf="nombreField.errors && nombreField.touched" class="text-danger ml-2">
+                        <p *ngIf="nombreField.hasError('required')">
+                            Es un campo requerido
+                        </p>
+                    </div>
+                </div>
+
+                <div class="form-row mb-2">
+                    <div class="col-md-6">
+                        <label class="font-weight-bold text-light">Referencia <span class="text-danger" *ngIf="refField.hasError('required') && refField.touched">*</span></label>
+                        <input formControlName="ref" class="form-control" type="text" placeholder="Referencia">
+                        <div *ngIf="refField.errors && refField.touched" class="text-danger">
+                            <p *ngIf="refField.hasError('required')">
+                                Es un campo requerido
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="font-weight-bold text-light">Cantidad <span class="text-danger" *ngIf="stockField.hasError('required') && stockField.touched">*</span></label>
+                        <input formControlName="stock" class="form-control" type="number" placeholder="Cantidad">
+                        <div *ngIf="stockField.errors && stockField.touched" class="text-danger">
+                            <p *ngIf="stockField.hasError('required')">
+                                Es un campo requerido
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row mb-2">
+                    <div class="col-md-12">
+                        <label class="font-weight-bold text-light">Descripcion <span class="text-danger"  *ngIf="descripcionField.hasError('required') && descripcionField.touched">*</span></label>
+                        <textarea cols="30" rows="10" formControlName="descripcion" placeholder="Desripcion" class="form-control2"></textarea>
+                        <small *ngIf="!descripcionField.hasError('maxlength')" class="text-light">{{ descripcionField.value.length }}/{{maxDesc}}</small>
+                        <small *ngIf="descripcionField.hasError('maxlength')" class="text-danger">{{ descripcionField.value.length }}/{{maxDesc}}</small>
+                    </div>
+                    <div *ngIf="descripcionField.errors && descripcionField.touched" class="text-danger ml-2">
+                        <p *ngIf="descripcionField.hasError('required')">
+                            Es un campo requerido
+                        </p>
+                        <p *ngIf="descripcionField.hasError('maxlength')" class="text-danger">
+                            Maximo 80 caracteres
+                        </p>
+
+                    </div>
+                </div>
+
+                <div class="form-row mb-2">
+                    <div class="col-md-6">
+                        <label class="font-weight-bold text-light">Precio $ <span class="text-danger"  *ngIf="precioField.hasError('required') && precioField.touched">*</span></label>
+                        <input type="number" formControlName="precio" class="form-control" placeholder="Precio">
+                        <div *ngIf="precioField.errors && precioField.touched" class="text-danger">
+                            <p *ngIf="precioField.hasError('required')">
+                                Es un campo requerido
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="font-weight-bold text-light">Ciudad </label>
+                        <input type="text" formControlName="ciudad" class="form-control" placeholder="Ciudad">
+                    </div>
+                </div>
+                <div class="mb-2">
+                    <div class="form-check">
+                        <input class="form-check-input" formControlName="ok" type="checkbox">
+                        <label class="form-check-label text-muted">Al seleccionar esta casilla aceptas nuestro aviso de privacidad y los términos y condiciones</label>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-1"></div>
+                    <div class="col-6">
+                        <button class="btn1 width-100" type="submmit" [disabled]="!form.get('ok').value || cargando">
+                                {{(cargando) ? 'Cargando...' : 'Publicar'}}
+                            </button>
+                    </div>
+
+                </div>
+
+            </form>
         </div>
     </div>
 </section>

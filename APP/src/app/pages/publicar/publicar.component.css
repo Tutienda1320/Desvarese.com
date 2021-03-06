@@ -28,10 +28,10 @@ body {
 }
 
 .contact-box {
-    padding: 3rem;
+    padding: 1rem;
 }
 
-.btn {
+.btn1 {
     font-weight: 400;
     padding: 1rem 2rem;
     border-radius: 5rem;
@@ -49,13 +49,22 @@ body {
     padding: 1.5rem 1rem;
 }
 
+.form-control2 {
+    background-color: var(#1f232b);
+    border: 2px solid var(#1f232b);
+    border-radius: .2rem;
+    padding: 1.5rem 1rem;
+    height: 100px;
+    width: 100%;
+}
 
-/* .register-bg {
-    background-image: url('images/hero.jpg');
+.register-bg {
+    /* background-image: url(`${{(imgPreview) ? imgPreview : ../../../assets/img/image.jpg}}`); */
+    background-image: url('../../../assets/img/oscuros.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     min-height: 100vh;
-} */
+}
 
 .testiomonial {
     bottom: 10px
@@ -71,6 +80,16 @@ body {
     .width-100 {
         width: 100%;
     }
+}
+
+.bordes {
+    border: 2px solid white;
+    border-radius: 5px;
+}
+
+.preview {
+    width: 160px;
+    height: 140px;
 }
 
 

@@ -65,4 +65,17 @@ export class BuscarItemsService {
       })
     );
   }
+
+  uploadItem(formulario : any):Observable<any>{
+    this.cargando=true;
+
+    return this.httpClient.post<Usuario>(`http://localhost:3000/api/items`, formulario).pipe(
+      tap(()=>{
+        this.cargando = false;
+      })
+    );
+    
+    console.log(formulario);
+    
+  }
 }
