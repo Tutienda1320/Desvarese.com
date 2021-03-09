@@ -1,17 +1,31 @@
 <section class="flex-row bd-highlight mb-3 register-bg">
-    <div class="p-2 bd-highlight">
+    <div class="p-2 bd-highlight d-flex">
+        <div class="bd-highlight">
+            <input type="file" class="d-none" (change)="photoselected($event)" #addPhoto multiple>
+            <img src='../../../assets/img/no-image.png' (click)="addPhoto.click()" class="img-fluid preview ml-3 mt-3" alt="No image">
+        </div>
+        <!-- <ul class="flex-row bd-highlight" *ngIf="photoPreview"> -->
+        <div class="bd-highlight" *ngFor="let photo of photoPreview; index as i">
+            <img [src]=" photoPreview[i]" class="img-fluid preview ml-3 mt-3" alt="No image">
+        </div>
+
+        <!-- </ul> -->
+    </div>
+
+    <!-- <div class="p-2 bd-highlight">
         <input class="btn bd-highlight btn-light m-2" type="file" (change)="OnChangeFile($event)">
     </div>
-    <div class="p-2 bd-highlight d-flex flex-wrap">
-        <div class="bd-highlight d-flex align-items-stretch" *ngIf="imgPreview[0]">
-            <div class="bd-highlight preview m-2" *ngFor="let imgPrev of imgPreview">
-                <button type="button" class="btn" (click)="onClick()"> 
+    <div class="p-2 bd-highlight d-flex">
+        <div class="bd-highlight d-flex align-items-stretch d-flex flex-wrap" *ngIf="imgPreview[0]">
+            <div class="bd-highlight preview m-2" *ngFor="let imgPrev of imgPreview; index as i">
+                <button type="button" class="btn  bd-highlight" (click)="deletePhoto(i)"> 
                     <i class="fas fa-trash-alt" style="color:red"></i>
                 </button>
-                <img class="preview" [src]="imgPrev" alt="">
+                <img class="preview bd-highlight" [src]="imgPrev" alt="">
             </div>
         </div>
     </div>
+     -->
     <div class="p-2 bd-highlight d-flex ">
         <div class="container align-self-center p-4">
             <h1 class="font-weight-bold mb-3 text-light">Ingresa nueva publicacion</h1>

@@ -32,9 +32,9 @@ export class NavBarComponent implements OnInit, AfterViewChecked {
       this.auth.user$.subscribe(
        (profile) => {
      
-          this.buscarItemsService.loginAPI(profile.sub, profile.nickname).subscribe(resp=>{
-            console.log(resp);    
-          });
+          // this.buscarItemsService.loginAPI(profile.sub, profile.nickname).subscribe(resp=>{
+          //   console.log(resp);    
+          // });
         });
    
     }

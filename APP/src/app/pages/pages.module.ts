@@ -2,20 +2,19 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
-import { ExternalApiComponent } from './external-api/external-api.component';
 import { ComponentsModule } from '../components/components.module';
 import { PipesModule } from '../pipes/pipes.module';
 import { HighlightModule, HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
 import { BuscarComponent } from './buscar/buscar.component';
 import { PublicarComponent } from './publicar/publicar.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { NgxFileDropModule } from 'ngx-file-drop';
 
 
 @NgModule({
   declarations: [
     HomeComponent,
     ProfileComponent,
-    ExternalApiComponent,
     BuscarComponent,
     PublicarComponent
   ],
@@ -24,7 +23,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     ComponentsModule,
     PipesModule,
     HighlightModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxFileDropModule
   ],
   providers:[
     {

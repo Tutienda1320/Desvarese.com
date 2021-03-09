@@ -5,11 +5,18 @@ const jwt = require('jsonwebtoken');
 const cors = require('cors');
 const ruta = express.Router();
 
+let json = "";
 
 ruta.post('/', (req, res) => {
 
-    res.json(req.body);
+    json = req.body;
+    console.log(json);
+    res.json(json);
 
+});
+
+ruta.get('/', (req, res) => {
+    res.json(json);
 });
 
 module.exports = ruta;

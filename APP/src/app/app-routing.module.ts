@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 import { ProfileComponent } from './pages/profile/profile.component';
-import { ExternalApiComponent } from './pages/external-api/external-api.component';
 import { AuthGuard } from '@auth0/auth0-angular';
 import { BuscarComponent } from './pages/buscar/buscar.component';
 import { ItemComponent } from './components/item/item.component';
@@ -21,11 +20,6 @@ const routes: Routes = [
   {
     path: 'profile',
     component: ProfileComponent
-  },
-  {
-    path: 'external-api',
-    component: ExternalApiComponent,
-    canActivate: [AuthGuard]
   },
   {
     path: 'buscar/:texto',
